@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/static/css/main.css" />
+    <link rel="stylesheet" href="/static/css/signupOrLogin.css" />
+    <link rel="stylesheet" href="/static/css/index.css" />
+    <link rel="stylesheet" href="/static/css/custom.css" />
+    <link rel="stylesheet" href="/static/css/blog.css" />
+    <!-- Include Tailwind CSS -->
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <title>{% block title %}Dev Quiz {% endblock %}</title>
+    <style>
+      .btn-gitub,
+      .btn-gitub::after {
+        padding: 10px 50px;
+        font-size: 20px;
+        border: none;
+        border-radius: 5px;
+        color: white;
+        background-color: transparent;
+        position: relative;
+      }
+
+      .btn-gitub::after {
+        --move1: inset(50% 50% 50% 50%);
+        --move2: inset(31% 0 40% 0);
+        --move3: inset(39% 0 15% 0);
+        --move4: inset(45% 0 40% 0);
+        --move5: inset(45% 0 6% 0);
+        --move6: inset(14% 0 61% 0);
+        clip-path: var(--move1);
+        content: "Contribute to DevQuiz";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        display: block;
+      }
+
+      .btn-gitub:hover::after {
+        animation: glitch_4011 1s;
+        text-shadow: 10 10px 10px black;
+        animation-timing-function: steps(2, end);
+        text-shadow: -3px -3px 0px #1df2f0, 3px 3px 0px #e94be8;
+        background-color: transparent;
+        border: 3px solid rgb(0, 255, 213);
+      }
+
+      .btn-gitub:hover {
+        text-shadow: -1px -1px 0px #1df2f0, 1px 1px 0px #e94be8;
+      }
+
+      .btn-gitub:hover {
+        background-color: transparent;
+        border: 1px solid rgb(0, 255, 213);
+        box-shadow: 0px 10px 10px -10px rgb(0, 255, 213);
+      }
+
+      @keyframes glitch_4011 {
+        0% {
+          clip-path: var(--move1);
+          transform: translate(0px, -10px);
+        }
+
+        10% {
+          clip-path: var(--move2);
+          transform: translate(-10px, 10px);
+        }
+
+        20% {
+          clip-path: var(--move3);
+          transform: translate(10px, 0px);
+        }
+
+        30% {
+          clip-path: var(--move4);
+          transform: translate(-10px, 10px);
+        }
+
+        40% {
+          clip-path: var(--move5);
+          transform: translate(10px, -10px);
+        }
+
+        50% {
+          clip-path: var(--move6);
+          transform: translate(-10px, 10px);
+        }
+
+        60% {
+          clip-path: var(--move1);
+          transform: translate(10px, -10px);
+        }
+
+        70% {
+          clip-path: var(--move3);
+          transform: translate(-10px, 10px);
+        }
+
+        80% {
+          clip-path: var(--move2);
+          transform: translate(10px, -10px);
+        }
+
+        90% {
+          clip-path: var(--move4);
+          transform: translate(-10px, 10px);
+        }
+
+        100% {
+          clip-path: var(--move1);
+          transform: translate(0);
+        }
+      }
+    </style>
+  </head>
+  <body class="flex flex-col min-h-screen">
+    <!-- Navbar -->
+    <nav class="bg-gray-800 p-4">
+      <div class="container mx-auto flex justify-between items-center">
+        <a href="/" class="text-white text-xl font-bold">
+          <img src="/static/images/logo.png" alt="logo image" class="log" />
+        </a>
+        <!-- Hamburger menu -->
+        <button
+          id="mobile-menu-btn"
+          class="text-white focus:outline-none lg:hidden"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16m-7 6h7"
+            ></path>
+          </svg>
+        </button>
+        <div class="hidden lg:flex lg:items-center">
+          <a href="https://github.com/kashif7868/dev_Quiz" target="_blank"
+            ><button class="btn-gitub text-white">
+              Contribute to DevQuiz
+              <i
+                class="fa-brands fa-github mx-2"
+                style="font-size: 20px"
+              ></i></button
+          ></a>
+        </div>
+      </div>
+    </nav>
+    <div id="mobile-menu" class="lg:hidden hidden bg-gray-800 text-white">
+      <a href="https://github.com/kashif7868/dev_Quiz" target="_blank"
+        ><button class="btn-gitub text-white">
+          Contribute to DevQuiz
+          <i
+            class="fa-brands fa-github mx-2"
+            style="font-size: 20px"
+          ></i></button
+      ></a>
+    </div>
+
+    <!-- Content -->
+    <div class="container mx-auto flex-grow">
+      {% block content %} {% endblock %}
+    </div>
+
+    <!-- Footer -->
+    <footer class="text-center py-4">
+      <a href="https://github.com/kashif7868/dev_Quiz" target="_blank"
+        ><button class="btn-gitub text-white mx-3">
+          Contribute to DevQuiz
+          <i
+            class="fa-brands fa-github mx-2"
+            style="font-size: 20px"
+          ></i></button
+      ></a>
+      <p class="text-white">&copy; 2024 Dev Quiz . All rights reserved.</p>
+    </footer>
+
+    <!-- JavaScript for mobile menu toggle -->
+    <script>
+      document
+        .getElementById("mobile-menu-btn")
+        .addEventListener("click", function () {
+          document.getElementById("mobile-menu").classList.toggle("hidden");
+        });
+    </script>
+    <script src="/static/js/python.js"></script>
+    <script src="/static/js/index.js"></script>
+  </body>
+</html>
